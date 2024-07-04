@@ -1,0 +1,107 @@
+body{
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+.h1{
+    color:black;
+    position: relative;
+    left:140px;
+    margin-top:40px;
+    font-weight:800;
+    font-size:30px;
+}
+.center{
+    /* z-index: 5; */
+    position:absolute;
+    top:50%;
+    left:50%;
+    height:490px;
+    transform:translate(-50%, -50%);
+    width:400px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.24);
+}
+
+.txtfield input{
+    font-size:14px;
+    height:40px;
+    border-bottom:1.5px solid rgb(79, 79, 79);
+    margin-top:90px;
+    position:relative;
+    bottom:20px;
+    left:40px;
+    width: 80%;
+    /* padding-left:30px; */
+    color:black;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.05);
+    transition:0.1s;
+}
+.txtfield input:focus{
+    border-bottom:2px solid black;
+    outline:none;
+}
+input::placeholder{
+    color:#444;
+    font-weight: 500;
+}
+.passfield input{
+    font-size:14px;
+    height:40px;
+    margin-top:10px;
+    position:relative;
+    bottom:20px;
+    left:40px;
+    width: 80%;
+    /* padding-left:30px; */
+    border-bottom:1.5px solid rgb(79, 79, 79);
+    color:black;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.05);
+    transition:.1s;
+}
+.passfield input:focus{
+    border-bottom:2px solid black;
+    outline:none;
+}
+.submit{
+    width:80%;
+    height:45px;
+    margin-bottom: 20px;
+    cursor:pointer;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    border:none;
+    font-size: 18px;
+    font-weight: 700;
+    position:relative;
+    left:3vw;
+    top:15px;
+    transition: 0.5s;
+}
+.submit:hover{
+    background-color: white;
+    color: black;
+    /* border: 1.75px solid black; */
+}
+.redirect{
+    position:relative;
+    top:55px;
+    font-weight: 700;
+    font-size: 18px;
+    right:25px;
+    width:30%;
+    height:40px;
+    border-radius: 25px;
+    color:black;
+    transition:0.4s;
+}
+.redirect:hover{
+    font-weight:550;
+}
+.redirect-text{
+    color:black;
+    position:relative;
+    top:55px;
+    padding-left:70px;
+}

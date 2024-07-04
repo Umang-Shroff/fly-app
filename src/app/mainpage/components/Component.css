@@ -1,0 +1,158 @@
+.innerdiv1{
+    height:70px;
+    font-size:13px;
+    position:relative;
+    left:415px;
+    margin-top:20px;
+    width:200px;
+    border-radius: 4px;
+    box-shadow:rgba(0, 0, 0, 0.35) 0px 3px 5px;
+}
+.personsvg{
+    position:relative;
+    bottom:30px;
+    left:20px;
+}
+.locatesvg{
+    position:relative;
+    bottom:30px;
+    left:20px;
+}
+
+.innerdiv2{
+    height:70px;
+    font-size:13px;
+    position:relative;
+    left:630px;
+    top:-80px;
+    border-radius: 4px;
+    width:200px;
+    box-shadow:rgba(0, 0, 0, 0.35) 0px 3px 5px;
+}
+.housesvg{
+    display:flex;
+    position:relative;
+    left:65px;
+    bottom:80px;
+    opacity:0.75;
+}
+.typediv{
+    position:relative;
+    left:45vw;
+    width:85px;
+    background-color:#ffd382;
+    top:-60px;
+    text-align:center;
+    font-weight:bold;
+    border-radius:6px;
+    font-size:13px;
+    padding-top:5px;
+    padding-bottom: 5px;
+}
+.firstbox{
+    background-color:#1f9090;
+    font-size: 12px;
+    border-radius:7px;
+    height:150px;
+    width:170px;
+    top:-40px;
+    position:relative;
+    left:30px;
+    color:white;
+    text-align:left;
+    padding-left:10px;
+    font-weight:bold;
+    padding-top:10px;
+    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px
+}
+.muiicon{
+    position:relative;
+    left:85px;
+    top:10px;
+    transform:scale(1.75)
+}
+.secondbox{
+    background-color:white;
+    border-radius:7px;
+    top:-190px;
+    height:150px;
+    width:170px;
+    position:relative;
+    left:240px;
+    color:black;
+    text-align:center;
+    font-weight:bold;
+    padding-top:10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
+}
+.thirdbox{
+    background-color:white;border-radius:7px;top:-340px;height:150px;width:170px;position:relative;left:450px;color:black;text-align:center;font-weight:bold;padding-top:10px;box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px
+}
+.fourthbox{
+    background-color:white;border-radius:7px;top:-490px;height:150px;width:170px;position:relative;left:655px;color:black;text-align:center;font-weight:bold;padding-top:10px;box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;font-size:13px
+}
+.fifthbox{
+    border-radius:7px;top:-620px;height:150px;width:170px;position:relative;left:840px;color:black;text-align:center;font-weight:bold;padding-top:10px;
+}
+.sixthbox{
+    background-color:#f9cb75;
+    border-radius:7px;
+    top:-790px;
+    height:150px;
+    width:170px;
+    position:relative;
+    left:1030px;
+    color:black;
+    text-align:center;
+    font-weight:bold;
+    padding-top:10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
+}
+.trucksvg{
+    position:relative;
+    left:45px;
+    bottom:40px;
+}
+.destinationsvg{
+    position:relative;
+    bottom:70px;
+    left:130px;
+}
+
+.secheader{
+    background-color:#f752c8;margin-top:-10px;padding-top:7px;padding-bottom:7px;border-radius:5px;color:white;width:170px;
+}
+.thirdheader{
+    background-color:#5528d1;margin-top:-10px;padding-top:7px;padding-bottom:7px;border-radius:5px;color:white;width:170px;
+}
+.fourthheader{
+    background-color:#1f9090;margin-top:-10px;padding-top:7px;padding-bottom:7px;border-radius:5px;color:white;width:170px;
+}
+.sixthheader{
+    background-color:#1f9090;margin-top:-10px;padding-top:7px;padding-bottom:7px;border-radius:5px;color:white;width:170px;
+}
+
+.arrowsvg1, .arrowsvg2, .arrowsvg3, .arrowsvg4, .arrowsvg5{
+    position:relative;
+    bottom:850px;
+    left:210px;
+}
+.arrowsvg1{
+    bottom:870px;
+}
+.arrowsvg2{
+    bottom: 885px;
+    left:420px;
+}
+.arrowsvg3{
+    bottom:905px;
+    left:630px;
+}
+.arrowsvg4{
+    bottom:920px;
+    left:835px;
+}
+.arrowsvg5{
+    bottom:940px;
+    left:1005px;
+}

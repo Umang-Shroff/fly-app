@@ -1,0 +1,21 @@
+.button{
+    border:1px solid white;
+    width:25px;
+    height:25px;
+    border-radius:4px;
+    background:rgb(204, 204, 204);
+    transition:0.5s;
+}
+.close{
+    border-radius:4px;
+    background:rgb(204, 204, 204);
+    height:30px;
+    width:30px;
+    position:relative;
+    left:255px;
+}
+.popup-content{
+    border-radius:5px;
+    width:300px;
+    height:100px;
+}
