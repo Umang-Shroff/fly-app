@@ -1,0 +1,25 @@
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+.btn{
+    border:1px solid white;
+    border-radius: 5px;
+    color:white;
+    background-color: black;
+    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 500;
+    width:200px;
+    height:40px;
+    margin-bottom: 10px;
+    position:relative;
+    top:50vh;
+    left:40%;
+}
+.btn:hover{
+    background-color: white;
+    border:none;
+    color:black;
+}
