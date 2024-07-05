@@ -153,31 +153,11 @@ export default function Home() {
       toast.error("Logout Error")
     }
   }
-  
-  // function downloadPDF(){
-  //   const input = pdfRef.current;
-  //   html2canvas(input).then((canvas)=>{
-  //     const imgData = canvas.toDataURL('image/png');
-  //     const pdf = new jsPDF('p','mm','o4',true);
-  //     const pdfWidth = pdf.internal.pageSize.getWidth();
-  //     const pdfHeight = pdf.internal.pageSize.getHeight();
-  //     const imgWidth = canvas.width;
-  //     const imgHeight = canvas.height;
-  //     const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-  //     const imgX = (pdfWidth - imgWidth * ratio) / 2;
-  //     const imgY = 30;
-  //     pdf.addImage(imgData, 'PNG', imgX,imgY,imgWidth*ratio,imgHeight*ratio);
-  //     pdf.save('FlyApp.pdf');
-  //   });
-  // }
 
   const submitFunc=(searchTerm)=>{
     console.log('search ', searchTerm);
     
   }
-
-  
-  
     const [pageNumber, setPageNumber] = useState(0);
     const usersPerPage = 6;
     const pagesVisited = pageNumber * usersPerPage;
@@ -187,108 +167,142 @@ export default function Home() {
       setPageNumber(selected)
     }
 
-    const displayUsers = trial
-    .slice(pagesVisited, pagesVisited + usersPerPage)
-    .filter((sale)=>{
-      if(startRange === '')
-      {
-        return sale;
-      }
-      if(dayjs(sale.orderdate).get("date").toString() >= sday.toString() && dayjs(sale.orderdate).get("date").toString() <= eday.toString())
-      {
-        // return sale;
-        if(dayjs(sale.orderdate).get("month").toString() >= (smon-1).toString() && dayjs(sale.orderdate).get("month").toString() <= (emon-1).toString())
-        {
-          // return sale;
-          if(dayjs(sale.orderdate).get("year").toString() >= (syear) && dayjs(sale.orderdate).get("year").toString() <= (eyear))
-          {
-            return sale;
-          }
-        }
-      }
-    })
-    .filter((sale)=>{
-      if(date === '')
-      {
-        return sale;
-      }
-      else if(dayjs(date).format('DD/MM/YYYY').toString().includes(dayjs(sale.orderdate).format('DD/MM/YYYY').toString()))
-      {
-        return sale;
-      }
-    })
-    .filter((sale)=>{
-      if(date1 === '')
-        {
-          return sale;
-        }
-        else if(dayjs(date1).format('DD/MM/YYYY').toString().includes(dayjs(sale.orderdate).format('DD/MM/YYYY').toString()))
-        {
-          return sale;
-        }
-    })
-    .filter((sale)=>{
-      return searchSO === '' ? sale : sale.salesorder.includes(searchSO)
-    })
-    .filter((sale)=>{
-      return prodType.toLowerCase() === '' ? sale : sale.productType.toLowerCase().includes(prodType)
-    })
-    .filter((sale)=>{
-      return custName.toLowerCase() === '' ? sale : sale.customerName.toLowerCase().includes(custName)
-    })
-    .filter((sale)=>{
-      return lotno.toString().toLowerCase() === '' ? sale : sale.lotNo.toString().includes(lotno)
-    })
-    .filter((sale)=>{
-      return delTime.toString().toLowerCase() === '' ? sale : sale.deliveryTime.toString().includes(delTime)
-    })
-    .map((sale,index)=>{    
-      let datex = new Date(sale.orderdate)
-      if(dayjs(date).format('DD/MM/YYYY').toString().includes(dayjs(sale.orderdate).format('DD/MM/YYYY').toString()))
-      console.log(dayjs(sale.orderdate).format('DD/MM/YYYY').toString())
-      return( 
-            <>
-              <tr key={index}>
-                  <td style={{borderTopLeftRadius:'10px',borderBottomLeftRadius:'10px'}} id="tabled">{sale.track}</td>
-                  <td id="tabled" format='DD-MM-YYYY' style={{width:'90px'}}>{dayjs(sale.orderdate).format('DD/MM/YYYY')}</td> 
-                  <td id="tabled">{sale.houseLocation}</td>
-                  <td id="tabled"><span style={{backgroundColor:'#0a5c34e1',borderRadius:'3px',paddingTop:'5px',paddingBottom:'5px',color:'white',paddingLeft:'5px',paddingRight:'5px'}}>{sale.salesorder}</span></td>
-                  <td id="tabled">{sale.customerName}</td>
-                  <td id="tabled">{sale.productType}</td>
-                  <td id="tabled">{sale.qty}</td>
-                  <td id="tabled">{sale.prePack}</td>
-                  <td id="tabled"><DetectedPopup qrs={sale.detectedQrs}/></td>
-                  <td id="tabled"><ActivatePopup qrs={sale.activateQrs}/></td>
-                  <td id="tabled">{sale.lotNo}</td>
-                  <td id="tabled"><span style={{backgroundColor:`${colorx}`,borderRadius:'3px',paddingTop:'5px',paddingBottom:'5px',color:'white',paddingLeft:'25px',paddingRight:'25px'}}>{sale.deliveryTime}</span></td>
-                  <td id="tabled" style={{fontWeight:'bold'}}>{sale.scannedApps}</td>
+  // DATA FROM DATABASE
+  
+   //  const displayUsers = trial
+   //  .slice(pagesVisited, pagesVisited + usersPerPage)
+   //  .filter((sale)=>{
+   //    if(startRange === '')
+   //    {
+   //      return sale;
+   //    }
+   //    if(dayjs(sale.orderdate).get("date").toString() >= sday.toString() && dayjs(sale.orderdate).get("date").toString() <= eday.toString())
+   //    {
+   //      if(dayjs(sale.orderdate).get("month").toString() >= (smon-1).toString() && dayjs(sale.orderdate).get("month").toString() <= (emon-1).toString())
+   //      {
+   //        if(dayjs(sale.orderdate).get("year").toString() >= (syear) && dayjs(sale.orderdate).get("year").toString() <= (eyear))
+   //        {
+   //          return sale;
+   //        }
+   //      }
+   //    }
+   //  })
+   //  .filter((sale)=>{
+   //    if(date === '')
+   //    {
+   //      return sale;
+   //    }
+   //    else if(dayjs(date).format('DD/MM/YYYY').toString().includes(dayjs(sale.orderdate).format('DD/MM/YYYY').toString()))
+   //    {
+   //      return sale;
+   //    }
+   //  })
+   //  .filter((sale)=>{
+   //    if(date1 === '')
+   //      {
+   //        return sale;
+   //      }
+   //      else if(dayjs(date1).format('DD/MM/YYYY').toString().includes(dayjs(sale.orderdate).format('DD/MM/YYYY').toString()))
+   //      {
+   //        return sale;
+   //      }
+   //  })
+   //  .filter((sale)=>{
+   //    return searchSO === '' ? sale : sale.salesorder.includes(searchSO)
+   //  })
+   //  .filter((sale)=>{
+   //    return prodType.toLowerCase() === '' ? sale : sale.productType.toLowerCase().includes(prodType)
+   //  })
+   //  .filter((sale)=>{
+   //    return custName.toLowerCase() === '' ? sale : sale.customerName.toLowerCase().includes(custName)
+   //  })
+   //  .filter((sale)=>{
+   //    return lotno.toString().toLowerCase() === '' ? sale : sale.lotNo.toString().includes(lotno)
+   //  })
+   //  .filter((sale)=>{
+   //    return delTime.toString().toLowerCase() === '' ? sale : sale.deliveryTime.toString().includes(delTime)
+   //  })
+   //  .map((sale,index)=>{    
+   //    let datex = new Date(sale.orderdate)
+   //    if(dayjs(date).format('DD/MM/YYYY').toString().includes(dayjs(sale.orderdate).format('DD/MM/YYYY').toString()))
+   //    console.log(dayjs(sale.orderdate).format('DD/MM/YYYY').toString())
+   //    return( 
+   //          <>
+   //            <tr key={index}>
+   //                <td style={{borderTopLeftRadius:'10px',borderBottomLeftRadius:'10px'}} id="tabled">{sale.track}</td>
+   //                <td id="tabled" format='DD-MM-YYYY' style={{width:'90px'}}>{dayjs(sale.orderdate).format('DD/MM/YYYY')}</td> 
+   //                <td id="tabled">{sale.houseLocation}</td>
+   //                <td id="tabled"><span style={{backgroundColor:'#0a5c34e1',borderRadius:'3px',paddingTop:'5px',paddingBottom:'5px',color:'white',paddingLeft:'5px',paddingRight:'5px'}}>{sale.salesorder}</span></td>
+   //                <td id="tabled">{sale.customerName}</td>
+   //                <td id="tabled">{sale.productType}</td>
+   //                <td id="tabled">{sale.qty}</td>
+   //                <td id="tabled">{sale.prePack}</td>
+   //                <td id="tabled"><DetectedPopup qrs={sale.detectedQrs}/></td>
+   //                <td id="tabled"><ActivatePopup qrs={sale.activateQrs}/></td>
+   //                <td id="tabled">{sale.lotNo}</td>
+   //                <td id="tabled"><span style={{backgroundColor:`${colorx}`,borderRadius:'3px',paddingTop:'5px',paddingBottom:'5px',color:'white',paddingLeft:'25px',paddingRight:'25px'}}>{sale.deliveryTime}</span></td>
+   //                <td id="tabled" style={{fontWeight:'bold'}}>{sale.scannedApps}</td>
                   
-                  <TableCell sx={{border:'1.5px solid white',borderTopRightRadius:'10px',borderBottomRightRadius:'10px'}}>
-                    <button className="tablebtn" style={{color:'white',fontWeight:'bold',width:'65px'}}>
-                      <IconButton aria-label="expand row" size="small" onClick={() => setOpen(open === index ? -1 : index)}> <span  style={{fontSize:'13px',color:'white',position:'relative',bottom:'2px'}}>Track</span>
-                              {open === index ? (
-                                <span style={{color:'white',paddingTop:'3px',paddingLeft:'5px',fontSize:'12px',background:'rgb(236, 145, 0)',width:'70px',right:'40px',height:'25px',top:'-5px',borderRadius:'4px',position:'relative',bottom:'2px'}}>Track <ArrowDropUpOutlinedIcon sx={{color:'white',height:'20px',position:'relative',bottom:'2px'}}/> </span>
+   //                <TableCell sx={{border:'1.5px solid white',borderTopRightRadius:'10px',borderBottomRightRadius:'10px'}}>
+   //                  <button className="tablebtn" style={{color:'white',fontWeight:'bold',width:'65px'}}>
+   //                    <IconButton aria-label="expand row" size="small" onClick={() => setOpen(open === index ? -1 : index)}> <span  style={{fontSize:'13px',color:'white',position:'relative',bottom:'2px'}}>Track</span>
+   //                            {open === index ? (
+   //                              <span style={{color:'white',paddingTop:'3px',paddingLeft:'5px',fontSize:'12px',background:'rgb(236, 145, 0)',width:'70px',right:'40px',height:'25px',top:'-5px',borderRadius:'4px',position:'relative',bottom:'2px'}}>Track <ArrowDropUpOutlinedIcon sx={{color:'white',height:'20px',position:'relative',bottom:'2px'}}/> </span>
                                 
-                              ) : (
-                                <span style={{color:'white',paddingTop:'3px',paddingLeft:'5px',fontSize:'12px',background:'#1f9090',width:'70px',right:'40px',height:'25px',top:'-5px',borderRadius:'4px',position:'relative',bottom:'2px'}}>Track <ArrowDropDownOutlinedIcon sx={{color:'white',height:'20px',position:'relative',bottom:'2px'}}/> </span>
-                              )}
-                      </IconButton>
-                      </button>
-                  </TableCell>                      
-              </tr>
-              <tr>
-                    <Collapse in={open === index} timeout="auto" sx={{width:'50px',backgroundColor:'rgb(233, 272, 233)', border:'0px solid rgb(233, 272, 233)'}} unmountOnExit>
-                      <Comp  customer={sale.customerName} house={sale.houseLocation} product={sale.productType} order={sale.orderdate} track={sale.track}/>
-                    </Collapse>
-              </tr>
+   //                            ) : (
+   //                              <span style={{color:'white',paddingTop:'3px',paddingLeft:'5px',fontSize:'12px',background:'#1f9090',width:'70px',right:'40px',height:'25px',top:'-5px',borderRadius:'4px',position:'relative',bottom:'2px'}}>Track <ArrowDropDownOutlinedIcon sx={{color:'white',height:'20px',position:'relative',bottom:'2px'}}/> </span>
+   //                            )}
+   //                    </IconButton>
+   //                    </button>
+   //                </TableCell>                      
+   //            </tr>
+   //            <tr>
+   //                  <Collapse in={open === index} timeout="auto" sx={{width:'50px',backgroundColor:'rgb(233, 272, 233)', border:'0px solid rgb(233, 272, 233)'}} unmountOnExit>
+   //                    <Comp  customer={sale.customerName} house={sale.houseLocation} product={sale.productType} order={sale.orderdate} track={sale.track}/>
+   //                  </Collapse>
+   //            </tr>
               
-          </>
-      );
+   //        </>
+   //    );
       
-   }) 
+   // }) 
 
 
+//  HARD CODED DATA
 
+  const displayUsers = return <tr key={index}>
+                      <td style={{borderTopLeftRadius:'10px',borderBottomLeftRadius:'10px'}} id="tabled">{sale.track}</td>
+                      <td id="tabled" format='DD-MM-YYYY' style={{width:'90px'}}>{dayjs(sale.orderdate).format('DD/MM/YYYY')}</td> 
+                      <td id="tabled">{sale.houseLocation}</td>
+                      <td id="tabled"><span style={{backgroundColor:'#0a5c34e1',borderRadius:'3px',paddingTop:'5px',paddingBottom:'5px',color:'white',paddingLeft:'5px',paddingRight:'5px'}}>{sale.salesorder}</span></td>
+                      <td id="tabled">{sale.customerName}</td>
+                      <td id="tabled">{sale.productType}</td>
+                      <td id="tabled">{sale.qty}</td>
+                      <td id="tabled">{sale.prePack}</td>
+                      <td id="tabled"><DetectedPopup qrs={sale.detectedQrs}/></td>
+                      <td id="tabled"><ActivatePopup qrs={sale.activateQrs}/></td>
+                      <td id="tabled">{sale.lotNo}</td>
+                      <td id="tabled"><span style={{backgroundColor:`${colorx}`,borderRadius:'3px',paddingTop:'5px',paddingBottom:'5px',color:'white',paddingLeft:'25px',paddingRight:'25px'}}>{sale.deliveryTime}</span></td>
+                      <td id="tabled" style={{fontWeight:'bold'}}>{sale.scannedApps}</td>
+                      
+                      <TableCell sx={{border:'1.5px solid white',borderTopRightRadius:'10px',borderBottomRightRadius:'10px'}}>
+                        <button className="tablebtn" style={{color:'white',fontWeight:'bold',width:'65px'}}>
+                          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(open === index ? -1 : index)}> <span  style={{fontSize:'13px',color:'white',position:'relative',bottom:'2px'}}>Track</span>
+                                  {open === index ? (
+                                    <span style={{color:'white',paddingTop:'3px',paddingLeft:'5px',fontSize:'12px',background:'rgb(236, 145, 0)',width:'70px',right:'40px',height:'25px',top:'-5px',borderRadius:'4px',position:'relative',bottom:'2px'}}>Track <ArrowDropUpOutlinedIcon sx={{color:'white',height:'20px',position:'relative',bottom:'2px'}}/> </span>
+                                    
+                                  ) : (
+                                    <span style={{color:'white',paddingTop:'3px',paddingLeft:'5px',fontSize:'12px',background:'#1f9090',width:'70px',right:'40px',height:'25px',top:'-5px',borderRadius:'4px',position:'relative',bottom:'2px'}}>Track <ArrowDropDownOutlinedIcon sx={{color:'white',height:'20px',position:'relative',bottom:'2px'}}/> </span>
+                                  )}
+                          </IconButton>
+                          </button>
+                      </TableCell>                      
+                  </tr>
+                  <tr>
+                        <Collapse in={open === index} timeout="auto" sx={{width:'50px',backgroundColor:'rgb(233, 272, 233)', border:'0px solid rgb(233, 272, 233)'}} unmountOnExit>
+                          <Comp  customer={sale.customerName} house={sale.houseLocation} product={sale.productType} order={sale.orderdate} track={sale.track}/>
+                        </Collapse>
+                  </tr>
 
 
 
