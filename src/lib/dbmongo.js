@@ -1,2 +1,2 @@
-export const connectionSrt = "MONGO_URI";
+export const connectionSrt = MONGO_URI;
 
